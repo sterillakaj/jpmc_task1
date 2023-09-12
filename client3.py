@@ -21,6 +21,7 @@
 import json
 import random
 import urllib.request
+from math import floor
 
 # Server API URLs
 QUERY = "http://localhost:8080/query?id={}"
@@ -44,7 +45,7 @@ def getRatio(price_a, price_b):
     """ ------------- Update this function ------------- """
     if price_b == 0:
         return
-    return price_a / price_b
+    return price_a/price_b
 
 
 # Main
@@ -58,6 +59,6 @@ if __name__ == "__main__":
         for quote in quotes:
             stock, bid_price, ask_price, price = getDataPoint(quote)
             prices[stock] = price
-            print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+            print("Quoted %s at (bid:%.2f, ask:%.2f, price:%.2f)" % (stock, bid_price, ask_price, price))
 
         print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
